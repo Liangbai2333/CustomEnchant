@@ -46,24 +46,24 @@ public class CustomEnchant
     public void registerEnchantments(RegistryEvent.Register<Enchantment> event) {
         logger.info("Registering custom enchantments.");
         event.getRegistry().registerAll(
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
                         , "behead"),
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
                         , "chain_collection"),
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
-                        , "moisturize"),
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
                         , "farm"),
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
                         , "farmer"),
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
                         , "damage_protection"),
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
                         , "smelt"),
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
-                        , "elytra"),
-                new CustomEnchantment(Enchantment.Rarity.RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
-                        , "moving_light_source")
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                        , "moving_light_source"),
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.DIGGER, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                        , "gold_digger"),
+                new CustomEnchantment(Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.ALL, new EntityEquipmentSlot[]{EntityEquipmentSlot.MAINHAND}
+                        , "eternal")
 
         );
         logger.info("Registered custom enchantments.");

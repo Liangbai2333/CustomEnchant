@@ -3,7 +3,9 @@ package site.liangbai.customenchant.command;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -28,7 +30,7 @@ public class CustomEnchantCommand extends CommandBase {
 
     @Override
     public String getUsage(ICommandSender sender) {
-        return "/customenchant add/remove/reset <name> [level]";
+        return "/customenchant add/remove/reset/book <name> [level]";
     }
 
     @Override
@@ -41,11 +43,6 @@ public class CustomEnchantCommand extends CommandBase {
             player.sendMessage(new TextComponentString("You don't have permission to use this command!"));
             return;
         }
-        ItemStack item = player.getHeldItem(EnumHand.MAIN_HAND);
-        if (item.isEmpty()) {
-            player.sendMessage(new TextComponentString("You don't have item!"));
-            return;
-        }
         if (args.length < 2) {
             player.sendMessage(new TextComponentString("Usage: " + getUsage(sender)));
             return;
@@ -56,6 +53,24 @@ public class CustomEnchantCommand extends CommandBase {
         CustomEnchantment enchantment = CustomEnchantment.registeredEnchantments.get(name);
         if (enchantment == null) {
             player.sendMessage(new TextComponentString("Unknown enchantment: " + name));
+            return;
+        }
+        if (subCommand.equals("book")) {
+            if (args.length != 3) {
+                player.sendMessage(new TextComponentString("Usage: " + getUsage(sender)));
+                return;
+            }
+            short level = Short.parseShort(args[2]);
+
+            ItemStack enchantedBook = ItemEnchantedBook.getEnchantedItemStack(new EnchantmentData(enchantment, level));
+
+            player.inventory.placeItemBackInInventory(player.world, enchantedBook);
+            player.sendMessage(new TextComponentString("Successfully receiving enchantment book: " + name + " " + level + "."));
+            return;
+        }
+        ItemStack item = player.getHeldItem(EnumHand.MAIN_HAND);
+        if (item.isEmpty()) {
+            player.sendMessage(new TextComponentString("You don't have item!"));
             return;
         }
         if (subCommand.equals("add")) {
@@ -110,6 +125,7 @@ public class CustomEnchantCommand extends CommandBase {
             NBTTagCompound tag = nbttaglist.getCompoundTagAt(index);
             short level = Short.parseShort(args[2]);
             tag.setShort("lvl", level);
+            player.sendMessage(new TextComponentString("Successfully resetting enchantment: " + name + " attaching your item in hand."));
         }
 
         item.setTagCompound(tagCompound);
